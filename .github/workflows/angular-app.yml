@@ -31,4 +31,4 @@ jobs:
       run: npm run build 
       
     - name: Deploy to Github Pages
-      run: npx angular-cli-ghpages --dir=dist/helloworld-app
+      run: npx angular-cli-ghpages --dir=/dist/helloworld-app
