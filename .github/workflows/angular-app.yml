@@ -20,7 +20,9 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
-
+      
+    - name: Install prereqs
+      run: npm install
     - name: Build and deploy Angular app
       run: ng build 
 	
