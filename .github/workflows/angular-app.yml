@@ -31,7 +31,7 @@ jobs:
       run: npm run build 
       
     - name: Debuggging
-      run: pwd; ls
+      run: ls dist
       
     - name: Deploy to Github Pages
-      run: npx angular-cli-ghpages --dir=/dist/helloworld-app
+      run: npx angular-cli-ghpages --dir=./dist/helloworld-app
