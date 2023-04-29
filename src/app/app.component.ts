@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   `,
 })
 export class AppComponent {
+  title = 'helloworld-app'; 
   message: string;
 
   constructor(private http: HttpClient) {
