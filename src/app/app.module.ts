@@ -10,8 +10,4 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      providers: [FlexSearchService]
-    });
 export class AppModule {}
