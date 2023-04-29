@@ -46,7 +46,9 @@ jobs:
     - name: Run headless scan
       uses: GabrielBB/xvfb-action@v1
       with:
-        run: npm test
+        run: |
+          sed -i -z "s/ removeAllListeners()\n/ removeAllListeners();process.nextTick(() => process.exit(code || 0));\n/g" node_modules/karma/lib/server.js
+          npm test
 
   deploy:
     needs: [test]
