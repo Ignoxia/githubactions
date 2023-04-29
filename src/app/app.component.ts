@@ -7,6 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
   template: `
     <h1>{{ message }}</h1>
   `,
+  imports:[ HttpClientModule ]
 })
 export class AppComponent {
   title = 'helloworld-app'; 
