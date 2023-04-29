@@ -43,8 +43,10 @@ jobs:
         path: ./dist/helloworld-app
     - name: Install dependencies
       run: npm ci
-    - name: Run tests
-      run: npm test
+    - name: Run headless scan
+      uses: GabrielBB/xvfb-action@v3
+      with:
+        run: npm test
 
   deploy:
     needs: [test]
