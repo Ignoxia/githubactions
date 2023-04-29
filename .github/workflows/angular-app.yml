@@ -47,6 +47,7 @@ jobs:
       uses: GabrielBB/xvfb-action@v1
       with:
         run: |
+          ng generate config karma
           sed -i -z "s/ removeAllListeners()\n/ removeAllListeners();process.nextTick(() => process.exit(code || 0));\n/g" node_modules/karma/lib/server.js
           npm test
 
