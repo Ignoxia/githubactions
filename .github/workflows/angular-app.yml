@@ -44,7 +44,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Run headless scan
-      uses: GabrielBB/xvfb-action@v3
+      uses: GabrielBB/xvfb-action@v1
       with:
         run: npm test
 
