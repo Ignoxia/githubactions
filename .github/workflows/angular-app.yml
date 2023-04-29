@@ -13,11 +13,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-          
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 16
+        node-version: 18
     - run: git config --global url.https://$GH_ACCESS_TOKEN@github.com/.insteadOf https://github.com/
     - run: git config --global user.name "Ignoxia"
     - run: git config --global user.email "comptuba@yahoo.com"
@@ -28,6 +27,31 @@ jobs:
     - name: Build Angular app
       run: npm run ng build 
       
-    - name: Deploy to Github Pages
-      run: npx angular-cli-ghpages --dir=./dist/helloworld-app  --no-silent
-        
+    
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Install dependencies
+      run: npm ci
+    - name: Run tests
+      run: npm test
+  
+  deploy: 
+    needs: [build, test]
+    runs-on: ubuntu latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build  # Change this to the directory containing your static files
+                
