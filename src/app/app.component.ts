@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
