@@ -6,8 +6,10 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule
       ],
+      providers: [FlexSearchService]
       declarations: [
         AppComponent
       ],
